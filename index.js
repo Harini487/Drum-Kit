@@ -115,7 +115,7 @@ function makeSound(key) {
 function buttonAnimation(currentKey) {
   var activeButton = document.querySelector("." + currentKey);//as the same format as the classes of the buttons(".w", ".k", etc.)
   
-  activeButton.classList.add("pressed"); //adding the pressed class in styles.css to the buttons to animate when selected
+  activeButton.classList.add(".pressed"); //adding the pressed class in styles.css to the buttons to animate when selected
 
   setTimeout(function() {
     activeButton.classList.remove(".pressed"); //This will remove the animation and bring back the original button style in 0.1sec
