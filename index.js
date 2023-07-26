@@ -7,12 +7,13 @@ for(let i = 0; i < numberOfDrumButtons; i++){
     //this - basically the identity of the button that triggered the event listener
     //see this by console.log(this) / console.log(this.innerHTML) - you get the assigned letter for each button class - w,a,s,d,j,k,l;
     
-    this.style.color = "black"; //Whenever you click on a button it turns black with this code
+    //this.style.color = "black"; //Whenever you click on a button it turns black with this code
 
     var buttonInnerHTML = this.innerHTML;
 
     makeSound(buttonInnerHTML); //For the key pressed method
 
+    buttonAnimation(buttonInnerHTML); //For button animations
 
     switch (buttonInnerHTML) {
       case "w":
@@ -61,7 +62,10 @@ for(let i = 0; i < numberOfDrumButtons; i++){
 document.addEventListener("keydown", function(event) { 
 
   makeSound(event.key); //key property of the event
-})
+
+  buttonAnimation(event.key);
+  
+});
 
 function makeSound(key) {
   
@@ -105,4 +109,20 @@ function makeSound(key) {
     }
     
 }
+
+//Adding animations to the buttons
+
+function buttonAnimation(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);//as the same format as the classes of the buttons(".w", ".k", etc.)
+  
+  activeButton.classList.add("pressed"); //adding the pressed class in styles.css to the buttons to animate when selected
+
+  setTimeout(function() {
+    activeButton.classList.remove(".pressed"); //This will remove the animation and bring back the original button style in 0.1sec
+  }, 100);
+
+
+}
+
+
 
